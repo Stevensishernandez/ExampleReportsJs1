@@ -26,7 +26,7 @@ function paintTable(){
                         <p class="card-text">addess: ${element.address}</p>
                         <p class="card-text">phone: ${element.phone}</p> 
                         <p class="card-text">nit: ${element.nit}</p> 
-                        <a href="#" class="btn btn-secondary">View</a>
+                        <a href="oneCliente.html?id=${element.id}" class="btn btn-secondary">View</a>
                         </div>
                     </div>`;
         conteiner.innerHTML += row;

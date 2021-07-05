@@ -39,7 +39,7 @@ function paintTable(){
                         <h5 class="card-title">Client: ${this.getNameClient(element.client)}</h5>
                         <p class="card-text">date: ${element.date}</p>
                         <p class="card-text">Total: ${getTotal(element.products)}</p> 
-                        <a href="#" class="btn btn-secondary">View</a>
+                        <a href="oneInvoice.html?id=${element.id}" class="btn btn-secondary">View</a>
                         </div>
                     </div>`;
         conteiner.innerHTML += row;

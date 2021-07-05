@@ -28,7 +28,7 @@ function paintTable(){
                         <p class="card-text">cost: ${element.cost}</p> 
                         <p class="card-text">price: ${element.price}</p> 
                         <p class="card-text">ingredients No: ${ Object.keys(ingredients).length }</p> 
-                        <a href="#" class="btn btn-secondary">View</a>
+                        <a href="oneProduct.html?id=${element.id}" class="btn btn-secondary">View</a>
                         </div>
                     </div>`;
         conteiner.innerHTML += row;
