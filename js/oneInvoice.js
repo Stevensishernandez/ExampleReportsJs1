@@ -2,6 +2,7 @@ const invoicesList = JSON.parse(localStorage.getItem('invoices'));
 const config = JSON.parse(localStorage.getItem('config'));
 const id =  window.location.href.split('?id=')[1];
 const clientsList = JSON.parse(localStorage.getItem('clients'));
+const productsList = JSON.parse(localStorage.getItem('products'));
 
 var invoice = '';
 var client = '';
@@ -61,6 +62,46 @@ document.getElementById('dataInvoice').innerHTML += `
 
 document.getElementById('totalInvoice').innerHTML = getTotal(invoice.products);
 
+var productsExists = [];
+
+function paintTable(){
+    var body = document.getElementById('tableBody');
+    productsExists = [];
+    invoice.products.forEach(element => {
+        product = getProducto(element.name);
+        if (product=='') {
+            product = element;
+        }
+        
+        if(productsExists.indexOf(element.name) == -1){
+            var quantity = getCantidad(element.name);
+            var row = `
+            <tr>
+                <td>${ Boolean(product.id) ? product.id : ''}</td>
+                <td>${product.name}</td>
+                <td>${ Boolean(product.description) ? product.description : '' }</td>
+                <td class="text-95">${product.price}</td>
+                <td class="text-secondary-d2">${quantity}</td>
+                <td class="text-95">${product.price * quantity}</td>
+            </tr>
+            `;
+            body.innerHTML += row;
+        }
+        
+    });
+}
+
+function getProducto(name){
+    var product = '';
+    productsList.forEach(element => {
+        if (element.name == name) {
+            product = element;
+            return;
+        }
+    });
+    return product;
+}
+
 function getTotal(products){
         total = 0;
         products.forEach(element => {
@@ -68,3 +109,16 @@ function getTotal(products){
         });
         return total;
 }
+
+function getCantidad(name){
+    productsExists.push(name);
+    quantity = 0;
+    invoice.products.forEach(element => {
+        if (element.name == name) {
+            quantity++;
+        }
+    });
+    return quantity;
+}
+
+paintTable();
