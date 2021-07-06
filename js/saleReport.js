@@ -22,7 +22,9 @@ function paint(){
     
     saleList.forEach(element => {
         var row = `<div class="card bg-light mb-4" style="max-width: 18rem; margin-right: 1rem">
-                        <div class="card-header">total: $${element.total}</div>
+                        <div class="card-header">
+                        <i class="fas fa-piggy-bank"></i>
+                        total: $${element.total}</div>
                         <div class="card-body">
                         <h5 class="card-title"> 
                         <i class="fas fa-user"></i>
